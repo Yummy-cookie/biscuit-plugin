@@ -10,7 +10,7 @@
 3.  安装ping插件 `git clone https://gitee.com/Yummy-cookie/yunzai-class-plugin/raw/master/ping.js ping.js `
 4.  安装查IP插件 `git clone https://gitee.com/Yummy-cookie/yunzai-class-plugin/raw/master/%E6%9F%A5IP.js 查IP.js`
 5.  安装查天气插件 `git clone https://gitee.com/Yummy-cookie/yunzai-class-plugin/raw/master/%E6%9F%A5%E5%A4%A9%E6%B0%94.js 查天气.js`
-6.  安装查手机号插件 `git clone https://gitee.com/Yummy-cookie/yunzai-class-plugin/raw/master/%E6%9F%A5%E6%89%8B%E6%9C%BA%E5%8F%B7.js 查手机号.js`
+6.  安装查手机号插件(向日葵) `git clone https://gitee.com/Yummy-cookie/yunzai-class-plugin/raw/master/%E6%9F%A5%E6%89%8B%E6%9C%BA%E5%8F%B7.js 查手机号.js`
 
 #### 参与贡献
 
