@@ -11,8 +11,8 @@
 
 1.  进入Yunzai目录
 2.  并且进入plugins/example
-3.  安装ping插件 `git clone `
-
+3.  安装ping插件 `git clone https://gitee.com/Yummy-cookie/yunzai-class-plugin/raw/master/ping.js ping.js `
+4.  安装查IP插件 `git clone https://gitee.com/Yummy-cookie/yunzai-class-plugin/raw/master/%E6%9F%A5IP.js 查IP.js`
 #### 使用说明
 
 1.  xxxx
