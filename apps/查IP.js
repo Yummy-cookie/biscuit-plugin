@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { plugin } from '../../../lib/plugins/plugin.js';
+import plugin from "../../../lib/plugins/plugin.js";
 
 export class ExamplePlugin extends plugin {
   constructor() {
