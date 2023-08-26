@@ -43,7 +43,7 @@ export const helpList = [
     title: '#火星ai+文字',
     desc: '问AI一些问题'  
   }, {
-    icon: 39,
+    icon: 41,
     title: '#kun音乐',
     desc: '小黑子，看你呢'
   }]
