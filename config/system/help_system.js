@@ -42,6 +42,10 @@ export const helpList = [
     icon: 40,
     title: '#火星ai+文字',
     desc: '问AI一些问题'  
+  }, {
+    icon: 39,
+    title: '#kun音乐',
+    desc: '小黑子，看你呢'
   }]
   }, { 
     group: '管理命令，仅管理员可用', 
