@@ -9,5 +9,5 @@ git clone --depth=1 https://gitee.com/Yummy-cookie/biscuit-plugin/ ./plugins/bis
 ```
 #### 预告
 ```
-火星AI
+暂时没有，可以询问我，然后添加
 ```
