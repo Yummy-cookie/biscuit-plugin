@@ -7,3 +7,8 @@
 ```
 git clone --depth=1 https://gitee.com/Yummy-cookie/biscuit-plugin/ ./plugins/biscuit-plugin
 ```
+#### 安装依赖
+```
+pnpm install axios -w
+pnpm install canvas -w
+```
