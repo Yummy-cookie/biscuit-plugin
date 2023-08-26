@@ -6,7 +6,7 @@ export class example extends plugin {
 	constructor() {
 		super({
 			/** 功能名称 */
-			name: '原神KFC语音',
+			name: 'kun音乐',
 			/** 功能描述 */
 			dsc: '简单开发示例',
 			/** https://oicqjs.github.io/oicq/#events */
