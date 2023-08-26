@@ -7,11 +7,11 @@ import lodash from "lodash";
 class twoCfg {
   constructor() {
     /** 默认设置 */
-    this.defSetPath = "./plugins/xrk-plugin/defSet/";
+    this.defSetPath = "./plugins/biscuit-plugin/defSet/";
     this.defSet = {};
 
     /** 用户设置 */
-    this.configPath = "./plugins/xrk-plugin/config/";
+    this.configPath = "./plugins/biscuit-plugin/config/";
     this.config = {};
 
     /** 监听文件 */

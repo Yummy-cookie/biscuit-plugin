@@ -3,7 +3,7 @@ import lodash from 'lodash'
 import cfgData from './cfg-lib/cfg-data.js'
 
 const _path = process.cwd()
-const _cfgPath = `${_path}/plugins/xrk-plugin/components/`
+const _cfgPath = `${_path}/plugins/biscuit-plugin/components/`
 let cfg = {}
 
 try {
