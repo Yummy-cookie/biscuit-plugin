@@ -42,8 +42,14 @@ export const helpList = [
     icon: 40,
     title: '#火星ai+文字',
     desc: '问AI一些问题'  
+  }]
+  }, { 
+    group: '管理命令，仅管理员可用', 
+    auth: 'master', 
+    list: [{ 
+    icon: 35, 
+    title: '#biscuit更新', 
+    desc: '更新饼干插件' 
 }]
 }]
-
-
 export const isSys = true
