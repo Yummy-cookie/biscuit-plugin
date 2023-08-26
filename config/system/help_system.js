@@ -33,7 +33,7 @@ export const helpList = [
   }, {
     icon: 38,
     title: '#ping 域名/IP',
-    desc: '嘿嘿嘿，看看谁是舔狗'
+    desc: '看看你服务器的状况吧'
   }, {
     icon: 39,
     title: '#查IP+IP',
