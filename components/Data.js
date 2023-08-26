@@ -2,7 +2,7 @@ import lodash from 'lodash'
 import fs from 'fs'
 
 const _path = process.cwd()
-const plugin = 'xrk-plugin'
+const plugin = 'biscuit-plugin'
 const getRoot = (root = '') => {
   if (root === 'root' || root === 'yunzai') {
     root = `${_path}/`
