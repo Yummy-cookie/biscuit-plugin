@@ -38,6 +38,10 @@ export const helpList = [
     icon: 39,
     title: '#查IP+IP',
     desc: '看看你好兄弟的位置'
+  }, {
+    icon: 39,
+    title: '#火星ai+文字',
+    desc: '问AI一些问题'  
 }]
 }]
 
