@@ -18,7 +18,7 @@ export class ExamplePlugin extends plugin {
   }
 
   async interactWithMarsAI(e) {
-    const message = e.msg.match(/^#火星AI (.+)$/)[1];
+    const message = e.msg.match(/^#火星ai(.+)$/)[1];
     const apiKey = 'IBVWYwYGKEgdG4dErUL1SwXdmO';
     const apiUrl = `https://api.lolimi.cn/api/ai/hx?key=${apiKey}&message=${encodeURIComponent(message)}`;
 
