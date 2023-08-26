@@ -96,7 +96,7 @@ export class CombinedPlugin extends plugin {
       const responseData = await response.json(); 
       const pingData = responseData.data;
       
-      const msg = `饼干查询链接：${pingData.url} \nIP地址：${pingData.IP} \n位置：${pingData.address} \n平均响应时间：${pingData.average} ms \n响应次数：${pingData.num} \n丢包率：${pingData.abandon};
+      const msg = `饼干查询链接：${pingData.url} \nIP地址：${pingData.IP} \n位置：${pingData.address} \n平均响应时间：${pingData.average} ms \n响应次数：${pingData.num} \n丢包率：${pingData.abandon}`;
 
       await e.reply(msg);
     } catch (error) {
