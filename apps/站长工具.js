@@ -51,36 +51,18 @@ export class CombinedPlugin extends plugin {
   }
 
   async handleQueryWeather(e) {
-    const region = e.msg.match(/^#查天气(.+)$/)[1];
-    const url = `https://api.vvhan.com/api/weather?city=${region}`;
-    const response = await fetch(url).catch((err) => logger.error(err));
-    
-    if (!response) {
-      return await this.reply('接口请求失败');
+    try {
+    const match = e.msg.match(/#查天气(.+)/);
+    const area = match ? match[1] : "";
+    let img_1 = `https://api.lolimi.cn/api/qqtq/t?msg=${area}&key=BM9omb4w3kTNrpopk7ZmkokSMj`;
+    let msg = [segment.image(`${img_1}`)];
+      await this.reply(msg);
+      return true;
+    } catch (error) {
+      await e.reply('接口请求错误');
+      return false;
     }
-
-    const res = await response.json();
-    const error = res.success;
-    
-    if (error !== true) {
-      await e.reply('查询出错');
-      return;
-    }
-    
-    const msg = [
-      "城市：", res.city, "\n",
-      "时间：", res.info.date, "\n",
-      "天气状态：", res.info.type, "\n",
-      "最高温：", res.info.high, "\n",
-      "最低温：", res.info.low, "\n",
-      "风向：", res.info.fengxiang, "\n",
-      "风级：", res.info.fengli, "\n",
-      "tip：", res.info.tip
-    ];
-    
-    await e.reply(msg);
-  }
-
+}
   async handlePingUrl(e) {
     const url = e.msg.match(/^#ping (.+)$/)[1];
     const apiKey = 'IBVWYwYGKEgdG4dErUL1SwXdmO';
