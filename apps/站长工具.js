@@ -50,19 +50,21 @@ export class CombinedPlugin extends plugin {
     }
   }
 
-  async handleQueryWeather(e) {
+   async function handleQueryWeather(e) {
     try {
-    const match = e.msg.match(/#查天气(.+)/);
-    const area = match ? match[1] : "";
-    let img_1 = `https://api.lolimi.cn/api/qqtq/t?msg=${area}&key=BM9omb4w3kTNrpopk7ZmkokSMj`;
-    let msg = [segment.image(`${img_1}`)];
-      await this.reply(msg);
-      return true;
+        const match = e.msg.match(/#查天气(.+)/);
+        const area = match ? match[1] : "";
+        const imgURL = `https://api.lolimi.cn/api/qqtq/t?msg=${area}&key=BM9omb4w3kTNrpopk7ZmkokSMj`;
+        const msg = [segment.image(imgURL)];
+        
+        await this.reply(msg);
+        return true;
     } catch (error) {
-      await e.reply('接口请求错误');
-      return false;
+        await e.reply('接口请求错误');
+        return false;
     }
 }
+
   async handlePingUrl(e) {
     const url = e.msg.match(/^#ping (.+)$/)[1];
     const apiKey = 'IBVWYwYGKEgdG4dErUL1SwXdmO';
