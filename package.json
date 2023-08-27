@@ -1,0 +1,15 @@
+{
+  "name": "biscuit-plugin",
+  "version": "1.1.0",
+  "description": "一些有趣的功能",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "biscuit",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0"
+  }
+}
