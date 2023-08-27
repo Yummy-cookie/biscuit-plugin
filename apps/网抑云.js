@@ -24,6 +24,6 @@ export class example extends plugin {
 	}
 
 	async Music(e) {
-		e.reply(segment.record('https://api.lolimi.cn/api/djwyy/wyy?key=IBVWYwYGKEgdG4dErUL1SwXdmO'))
+		await this.e.reply(segment.record('https://api.lolimi.cn/api/djwyy/wyy?key=IBVWYwYGKEgdG4dErUL1SwXdmO'))
 	}
 }
