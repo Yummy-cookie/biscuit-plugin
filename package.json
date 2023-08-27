@@ -3,6 +3,7 @@
   "version": "1.1.0",
   "description": "一些有趣的功能",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
