@@ -27,7 +27,7 @@ pnpm install -p
 ```
 两种安装方式
 ```
-pnpm install --fliter=biscuit-plugin
+pnpm install --filter=biscuit-plugin
 ```
 
 #### 预告
