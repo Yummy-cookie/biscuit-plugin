@@ -46,6 +46,10 @@ export const helpList = [
     icon: 41,
     title: '#kun音乐',
     desc: '小黑子，看你呢'
+  }, {
+    icon: 42, 
+    title: '#网抑云', 
+    desc: 'emo'
   }]
   }, { 
     group: '管理命令，仅管理员可用', 
