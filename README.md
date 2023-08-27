@@ -23,7 +23,11 @@ git clone --depth=1 https://gitee.com/Yummy-cookie/biscuit-plugin.git ./plugins/
 #### 安装依赖
 
 ```
-pnpm add axios -w
+pnpm install -p
+```
+两种安装方式
+```
+pnpm install --fliter=biscuit-plugin
 ```
 
 #### 预告
