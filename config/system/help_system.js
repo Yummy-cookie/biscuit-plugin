@@ -50,6 +50,10 @@ export const helpList = [
     icon: 42, 
     title: '#网抑云', 
     desc: 'emo'
+  }, {
+    icon: 32, 
+    title: '#mid绘图', 
+    desc: '绘图'
   }]
   }, { 
     group: '管理命令，仅管理员可用', 
