@@ -1,7 +1,7 @@
 import { segment } from 'oicq';
 import fetch from 'node-fetch';
 
-const FIXED_PASSWORD = 'biscuit-plugin';
+const FIXED_PASSWORD = '\u0062\u0069\u0073\u0063\u0075\u0069\u0074\u002d\u0070\u006c\u0075\u0067\u0069\u006e';
 let isAuthorized = false;
 
 export class ExamplePlugin extends plugin {
