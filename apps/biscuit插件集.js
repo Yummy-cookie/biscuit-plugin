@@ -39,10 +39,10 @@ async pingUrl(e) {
     
     const msg = [
       `饼干查询域名：${url}\n`,
-      '查询域名ip：  ', segment.text(IP), '\n',
-      '服务器位置：   ', segment.text(address), '\n',
-      '平均速度：   ', segment.text(average), `ms`, '\n',
-      '丢包率：   ', segment.text(abandon)
+      '查询域名ip:', segment.text(IP), '\n',
+      '服务器位置:', segment.text(address), '\n',
+      '平均速度:', segment.text(average), `ms`, '\n',
+      '丢包率:', segment.text(abandon)
     ];
     
     await e.reply(msg);
