@@ -27,33 +27,9 @@ export const helpList = [
 {
   group: '饼干插件功能',
   list: [{
-    icon: 37,
-    title: '#查天气＋地区',
-    desc: '查看某地的天气哦！'
-  }, {
-    icon: 38,
-    title: '#ping 域名/IP',
-    desc: '看看你服务器的状况吧'
-  }, {
-    icon: 39,
-    title: '#查IP+IP',
-    desc: '看看你好兄弟的位置'
-  }, {
-    icon: 40,
-    title: '#火星ai+文字',
-    desc: '问AI一些问题'  
-  }, {
-    icon: 41,
-    title: '#kun音乐',
-    desc: '小黑子，看你呢'
-  }, {
-    icon: 42, 
-    title: '#网抑云', 
-    desc: 'emo'
-  }, {
-    icon: 32, 
-    title: '#mid绘图', 
-    desc: '绘图'
+    icon: 72,
+    title: '#ping',
+    desc: 'ping一下你的服务器吧'
   }]
   }, { 
     group: '管理命令，仅管理员可用', 
