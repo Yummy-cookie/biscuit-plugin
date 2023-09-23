@@ -50,14 +50,13 @@ export const helpList = [
         icon: 79,
     title: '#查询命令 (命令)',
     desc: '给你的脑子长长知识吧'
-    },
    }]
   }, { 
     group: '管理命令，仅管理员可用', 
     auth: 'master', 
     list: [{ 
     icon: 35, 
-    title: '#biscuit更新', 
+    title: '#饼干更新', 
     desc: '更新饼干插件' 
 }]
 }]
