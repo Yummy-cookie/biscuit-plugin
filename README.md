@@ -6,13 +6,13 @@
 
 求求点个**Star**,谢谢
 
+[加入聊天群①](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=7ypRMfqszQPra4kCpyMA-a0VkG6An9GQ&authKey=ZyhfSIqJlyIHj2x%2FkJE1lzbX61HXvPyH7ZINxAdoLsF35dWLSLpKlVSZxsKIhVde&noverify=0&group_code=374248018)
+
 ![help](./resources/help/help.png)
 
 #### 使用教程
 
 请对机器人发送`#饼干帮助`查看帮助
-
-如果绘图提示请先设置正确的密码以获取授权,找我要密码
 
 #### 安装教程
 
