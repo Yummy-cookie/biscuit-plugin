@@ -21,11 +21,11 @@ export class example extends plugin {
 	}
 
 	async biscuitmusic(e) {
-		this.e. reply(uploadRecord('https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C&format=mp3'))
+		this.e.reply(uploadRecord('https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C&format=mp3'))
 		return true
 	}
 	async biscuitmusic1(e) {
-		this.e. reply(uploadRecord('https://api.paugram.com/acgm/?list=1&play=true'))
+		this.e.reply(uploadRecord('https://api.paugram.com/acgm/?list=1&play=true'))
 		return true
 	}
 }
