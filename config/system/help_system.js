@@ -28,12 +28,16 @@ export const helpList = [
   group: '饼干插件功能',
   list: [{
     icon: 72,
-    title: '#ping',
+    title: '#ping (域名或IP)',
     desc: 'ping一下你的服务器吧'
     },{
         icon: 75,
     title: '#每日新闻',
     desc: '看看今天的新闻吧'
+    },{
+        icon: 90,
+    title: '#每日沙雕新闻',
+    desc: '看看今天的沙雕新闻(你脑子呢？)'
     },{
         icon: 76,
     title: '#随机网易云',
@@ -42,6 +46,11 @@ export const helpList = [
         icon: 74,
     title: '#随机动漫音乐',
     desc: '回忆一下之前看过动漫的音乐吧'
+    },{
+        icon: 79,
+    title: '#查询命令 (命令)',
+    desc: '给你的脑子长长知识吧'
+    },
    }]
   }, { 
     group: '管理命令，仅管理员可用', 
