@@ -12,7 +12,7 @@ export class example extends plugin {
 			rule: [{
 					reg: '^#ping (.+)$',
                     fnc: 'pingUrl'
-                    },
+                    },{
                     reg: '^#?每日新闻.*$',
                     fnc: 'dailynews'
 				}
