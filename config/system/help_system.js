@@ -30,7 +30,19 @@ export const helpList = [
     icon: 72,
     title: '#ping',
     desc: 'ping一下你的服务器吧'
-  }]
+    },{
+        icon: 75,
+    title: '#每日新闻',
+    desc: '看看今天的新闻吧'
+    },{
+        icon: 76,
+    title: '#随机网易云',
+    desc: '听听音乐吧'
+    },{
+        icon: 74,
+    title: '#随机动漫音乐',
+    desc: '回忆一下之前看过动漫的音乐吧'
+   }]
   }, { 
     group: '管理命令，仅管理员可用', 
     auth: 'master', 
