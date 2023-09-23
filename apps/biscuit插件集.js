@@ -32,11 +32,6 @@ async pingUrl(e) {
     const response = await fetch(apiUrl);
     const responseData = await response.json();
     
-    if (responseData.code !== -1 || !responseData.data) {
-      await e.reply('无法查到这个域名的信息哦');
-      return;
-    }
-    
     const { IP, address, small, max, average, Times } = responseData.data;
     
     const msg = [

@@ -7,7 +7,7 @@ try {
 } catch (error) {
   if (error.stack?.includes('Cannot find package')) {
     logger.warn('--------biscuit依赖缺失--------')
-    logger.warn(`biscuit-plugin 缺少依赖将无法使用 ${logger.yellow('AI绘图')}`)
+    logger.warn(`biscuit-plugin 缺少依赖将无法使用 ${logger.yellow('部分用不了')}`)
     logger.warn(`如需使用请运行：${logger.red('pnpm add axios -w')}`)
     logger.warn('---------------------------')
     logger.debug(decodeURI(error.stack))
