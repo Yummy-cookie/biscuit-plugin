@@ -58,7 +58,6 @@ export class example extends plugin {
 				'平均速度:',
 				segment.text(average),
 				`ms`,
-				'\n'
 			];
 
 			await e.reply(msg);
