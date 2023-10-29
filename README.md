@@ -34,8 +34,7 @@ pnpm install -p
 pnpm install --filter=biscuit-plugin
 ```
 
-#### 预告
+#### 预告&其他
 
-```
-暂时没有，可以询问我，然后添加
-```
+- 暂时没有，可以询问我，然后添加
+- 赞助[点我跳转](https://biscuitawa.top/qr.png)(记得备注自己)
