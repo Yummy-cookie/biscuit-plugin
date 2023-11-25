@@ -8,7 +8,7 @@
 
 求求点个**Star**,谢谢
 
-[加入聊天群①](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=7ypRMfqszQPra4kCpyMA-a0VkG6An9GQ&authKey=ZyhfSIqJlyIHj2x%2FkJE1lzbX61HXvPyH7ZINxAdoLsF35dWLSLpKlVSZxsKIhVde&noverify=0&group_code=374248018)
+[加入聊天群①](https://h5.qun.qq.com/s/hFFOCBqprO)
 
 ![help](./resources/help/help.png)
 
