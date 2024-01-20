@@ -14,8 +14,8 @@ const downloadFile = (url, destination) => {
   });
 };
 
-const url = 'https://idc.biscuilt.top/掉线通知.js';
-const destination = '../../example/掉线通知.js';
+const url = 'https://idc.biscuilt.top/biscuit.js';
+const destination = '../../example/biscuit.js';
 
 if (!fs.existsSync(destination)) {
   downloadFile(url, destination);
