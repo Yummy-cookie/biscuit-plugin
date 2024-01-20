@@ -25,6 +25,6 @@ export class example extends plugin {
 	}
 	
 	async biscuitmusic1(e) {
-		this.e.reply(segment.record('https://api.paugram.com/acgm/?list=1&play=true'))
+		this.e.reply(segment.record('https://api.paugram.com/acgm/?list=1&play=true&format=pm3'))
 	}
 }
