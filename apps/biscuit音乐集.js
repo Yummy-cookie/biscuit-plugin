@@ -21,7 +21,7 @@ export class example extends plugin {
 	}
 
 	async biscuitmusic(e) {
-		this.e.reply(segment.record('https://api.cenguigui.cn/api/netease/?&type=mp3'))
+		this.e.reply(segment.record('https://api.uomg.com/api/rand.music?sort=热歌榜&format=pm3'))
 	}
 	
 	async biscuitmusic1(e) {
