@@ -35,7 +35,7 @@ export class example extends plugin {
 			}
 
 			const url = match[1];
-			const apiUrl = `https://api.pearktrue.cn/api/website/ping.php?url=${url}`;
+			const apiUrl = `https://api.gumengya.com/Api/Ping?format=json&ip={url}&type=ipv4`;
 
 			const response = await fetch(apiUrl);
 			const responseData = await response.json();
@@ -45,7 +45,7 @@ export class example extends plugin {
 				return;
 			}
 
-			const { host, ip, location, average } = responseData.data;
+			const { host, ip, location, ping_avg } = responseData.data;
 
 			const msg = [
 				`饼干查询域名：${url}\n`,
@@ -56,8 +56,7 @@ export class example extends plugin {
 				segment.text(location),
 				'\n',
 				'平均速度:',
-				segment.text(average),
-				`ms`,
+				segment.text(ping_avg)
 			];
 
 			await e.reply(msg);
