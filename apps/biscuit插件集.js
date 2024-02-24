@@ -41,7 +41,7 @@ export class example extends plugin {
 			const responseData = await response.json();
 
 			if (responseData.code !== 200 || !responseData.data) {
-				await e.reply('无法查到这个域名的信息哦');
+				await e.reply('无法查到这个域名的信息哦cmc');
 				return;
 			}
 
@@ -56,7 +56,7 @@ export class example extends plugin {
 				segment.text(location),
 				'\n',
 				'平均速度:',
-				segment.text(ping_avg),
+				segment.text(ping_avg)，
 			];
 
 			await e.reply(msg);
