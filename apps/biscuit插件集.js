@@ -56,7 +56,7 @@ export class example extends plugin {
 				segment.text(location),
 				'\n',
 				'平均速度:',
-				segment.text(ping_avg)
+				segment.text(ping_avg),
 			];
 
 			await e.reply(msg);
