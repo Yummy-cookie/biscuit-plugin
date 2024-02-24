@@ -35,7 +35,7 @@ export class example extends plugin {
 			}
 
 			const url = match[1];
-			const apiUrl = `https://api.gumengya.com/Api/Ping?format=json&ip={url}&type=ipv4`;
+			const apiUrl = `https://api.gumengya.com/Api/Ping?format=json&ip=${url}&type=ipv4`;
 
 			const response = await fetch(apiUrl);
 			const responseData = await response.json();
