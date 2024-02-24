@@ -40,7 +40,7 @@ export class example extends plugin {
 			const response = await fetch(apiUrl);
 			const responseData = await response.json();
 
-			if (responseData.code !== 400 || !responseData.data) {
+			if (responseData.code !== 200 || !responseData.data) {
 				await e.reply('无法查到这个域名的信息哦');
 				return;
 			}
