@@ -1,118 +1,117 @@
-import fs from 'fs'
-import _ from 'lodash'
-import cfg from '../../../lib/config/config.js'
-const Plugin_Path = `${process.cwd()}/plugins/biscuit-plugin`
-const README_path = `${Plugin_Path}/README.md`
-const CHANGELOG_path = `${Plugin_Path}/CHANGELOG.md`
+import fs from 'node:fs'
+import lodash from 'lodash'
+import { Data } from './index.js'
 
-let yunzai_ver = '';
-try{
-  let packageJson = JSON.parse(fs.readFileSync(`${process.cwd()}/package.json`, 'utf8'));
-  yunzai_ver = packageJson.version;
-}catch(err){}
-
-let logs = {}
-let changelogs = []
-let currentVersion
-let versionCount = 2
+let packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'))
 
 const getLine = function (line) {
   line = line.replace(/(^\s*\*|\r)/g, '')
   line = line.replace(/\s*`([^`]+`)/g, '<span class="cmd">$1')
   line = line.replace(/`\s*/g, '</span>')
-  line = line.replace(/\s*\*\*([^*]+\*\*)/g, '<span class="strong">$1')
+  line = line.replace(/\s*\*\*([^\*]+\*\*)/g, '<span class="strong">$1')
   line = line.replace(/\*\*\s*/g, '</span>')
   line = line.replace(/ⁿᵉʷ/g, '<span class="new"></span>')
   return line
 }
 
-try {
-  if (fs.existsSync(CHANGELOG_path)) {
-    logs = fs.readFileSync(CHANGELOG_path, 'utf8') || ''
-    logs = logs.replace(/\t/g, '   ').split('\n')
-    let temp = {}
-    let lastLine = {}
-    _.forEach(logs, (line) => {
-      if (versionCount <= -1) {
-        return false
-      }
-      let versionRet = /^#\s*([0-9a-zA-Z\\.~\s]+?)\s*$/.exec(line.trim())
-      if (versionRet && versionRet[1]) {
-        let v = versionRet[1].trim()
-        if (!currentVersion) {
-          currentVersion = v
-        } else {
-          changelogs.push(temp)
-          if (/0\s*$/.test(v) && versionCount > 0) {
-            // versionCount = 0
-            versionCount--
+const readLogFile = function (root, versionCount = 4) {
+  root = Data.getRoot(root)
+  let logPath = `${root}/CHANGELOG.md`
+  let logs = {}
+  let changelogs = []
+  let currentVersion
+
+  try {
+    if (fs.existsSync(logPath)) {
+      logs = fs.readFileSync(logPath, 'utf8') || ''
+      logs = logs.split('\n')
+
+      let temp = {}
+      let lastLine = {}
+      lodash.forEach(logs, (line) => {
+        if (versionCount <= -1) {
+          return false
+        }
+        let versionRet = /^#\s*([0-9a-zA-Z\\.~\s]+?)\s*$/.exec(line)
+        if (versionRet && versionRet[1]) {
+          let v = versionRet[1].trim()
+          if (!currentVersion) {
+            currentVersion = v
           } else {
-            versionCount--
-          }
-        }
-        temp = {
-          version: v,
-          logs: []
-        }
-      } else {
-        if (!line.trim()) {
-          return
-        }
-        if (/^\*/.test(line)) {
-          lastLine = {
-            title: getLine(line),
-            logs: []
-          }
-          if (!temp.logs) {
-            temp = {
-              version: line,
-              logs: []
+            changelogs.push(temp)
+            if (/0\s*$/.test(v) && versionCount > 0) {
+              versionCount = 0
+            } else {
+              versionCount--
             }
           }
-          temp.logs.push(lastLine)
-        } else if (/^\s{2,}\*/.test(line)) {
-          lastLine.logs.push(getLine(line))
+
+          temp = {
+            version: v,
+            logs: []
+          }
+        } else {
+          if (!line.trim()) {
+            return
+          }
+          if (/^\*/.test(line)) {
+            lastLine = {
+              title: getLine(line),
+              logs: []
+            }
+            temp.logs.push(lastLine)
+          } else if (/^\s{2,}\*/.test(line)) {
+            lastLine.logs.push(getLine(line))
+          }
         }
-      }
-    })
-  }
-} catch (e) {
-  logger.error(e)
-  // do nth
-}
-
-try {
-  if (fs.existsSync(README_path)) {
-    let README = fs.readFileSync(README_path, 'utf8') || ''
-    let reg = /版本：(.*)/.exec(README)
-    if (reg) {
-      currentVersion = reg[1]
+      })
     }
+  } catch (e) {
+    // do nth
   }
-} catch (err) { }
-
-let yunzaiName = cfg.package.name
-if (yunzaiName == 'miao-yunzai') {
-  yunzaiName = 'Miao-Yunzai'
-} else if (yunzaiName == 'yunzai') {
-  yunzaiName = 'Yunzai-Bot'
-} else if (yunzaiName == 'trss-yunzai') {
-  yunzaiName = 'TRSS-Yunzai'
-} else {
-  yunzaiName = _.capitalize(yunzaiName)
+  return { changelogs, currentVersion }
 }
+
+const { changelogs, currentVersion } = readLogFile('miao')
+
+
+const yunzaiVersion = packageJson.version
+const isV3 = yunzaiVersion[0] === '3'
+let isMiao = false
+let name = 'Yunzai-Bot'
+let isAlemonjs = false
+if (packageJson.name === 'miao-yunzai') {
+  isMiao = true
+  name = 'Miao-Yunzai'
+} else if (packageJson.name === 'trss-yunzai') {
+  isMiao = true
+  name = 'TRSS-Yunzai'
+} 
+else if (packageJson.name === 'a-yunzai') {
+  isMiao = true
+  name = 'A-Yunzai'
+  isAlemonjs = true
+}
+
+
 let Version = {
-  get ver () {
+  isV3,
+  isMiao,
+  name,
+  isAlemonjs,
+  get version () {
     return currentVersion
   },
-  get name () {
-    return yunzaiName
-  },
   get yunzai () {
-    return yunzai_ver
+    return yunzaiVersion
   },
-  get logs () {
+  get changelogs () {
     return changelogs
-  }
+  },
+  runtime () {
+    console.log(`未能找到e.runtime，请升级至最新版${isV3 ? 'V3' : 'V2'}-Yunzai以使用biscuit-plugin`)
+  },
+  readLogFile
 }
+
 export default Version

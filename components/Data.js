@@ -1,18 +1,24 @@
 import lodash from 'lodash'
-import fs from 'fs'
+import fs from 'node:fs'
+import util from 'node:util'
 
 const _path = process.cwd()
-const plugin = 'biscuit-plugin'
 const getRoot = (root = '') => {
-  if (root === 'root' || root === 'yunzai') {
+  if (!root) {
     root = `${_path}/`
-  } else if (!root) {
-    root = `${_path}/plugins/${plugin}/`
+  } else if (root === 'root' || root === 'yunzai') {
+    root = `${_path}/`
+  } else if (root === 'miao') {
+    root = `${_path}/plugins/biscuit-plugin/`
+  } else {
+    root = `${_path}/plugins/${root}/`
   }
   return root
 }
 
 let Data = {
+
+  getRoot,
 
   /*
   * 根据指定的path依次检查与创建目录
@@ -43,6 +49,7 @@ let Data = {
       try {
         return JSON.parse(fs.readFileSync(`${root}/${file}`, 'utf8'))
       } catch (e) {
+        console.error(`JSON数据错误: ${root}/${file}`)
         console.log(e)
       }
     }
@@ -52,12 +59,39 @@ let Data = {
   /*
   * 写JSON
   * */
-  writeJSON (file, data, space = '\t', root = '') {
+  writeJSON (cfg, data, root = '', space = 2) {
+    if (arguments.length > 1) {
+      return Data.writeJSON({
+        name: cfg,
+        data,
+        space,
+        root
+      })
+    }
     // 检查并创建目录
-    Data.createDir(file, root, true)
-    root = getRoot(root)
+    let name = cfg.path ? (cfg.path + '/' + cfg.name) : cfg.name
+    Data.createDir(name, cfg.root, true)
+    root = getRoot(cfg.root)
+    data = cfg.data
     delete data._res
-    return fs.writeFileSync(`${root}/${file}`, JSON.stringify(data, null, space))
+    data = JSON.stringify(data, null, cfg.space || 2)
+    if (cfg.rn) {
+      data = data.replaceAll('\n', '\r\n')
+    }
+    return fs.writeFileSync(`${root}/${name}`, data)
+  },
+
+  delFile (file, root = '') {
+    root = getRoot(root)
+    try {
+      if (fs.existsSync(`${root}/${file}`)) {
+        fs.unlinkSync(`${root}/${file}`)
+      }
+      return true
+    } catch (error) {
+      logger.error(`文件删除失败：${error}`)
+    }
+    return false
   },
 
   async getCacheJSON (key) {
@@ -72,7 +106,23 @@ let Data = {
     return {}
   },
 
-  async setCacheJSON (key, data, EX = 3600 * 24 * 90) {
+  async setCacheJSON (key, data, EX = 3600 * 24 * 365) {
+    await redis.set(key, JSON.stringify(data), { EX })
+  },
+
+  async redisGet (key, def = {}) {
+    try {
+      let txt = await redis.get(key)
+      if (txt) {
+        return JSON.parse(txt)
+      }
+    } catch (e) {
+      console.log(e)
+    }
+    return def
+  },
+
+  async redisSet (key, data, EX = 3600 * 24 * 90) {
     await redis.set(key, JSON.stringify(data), { EX })
   },
 
@@ -86,6 +136,7 @@ let Data = {
         let data = await import(`file://${root}/${file}?t=${new Date() * 1}`)
         return data || {}
       } catch (e) {
+        console.error(`import module错误: ${root}/${file}`)
         console.log(e)
       }
     }
@@ -97,15 +148,11 @@ let Data = {
     return ret.default || {}
   },
 
-  async import (name) {
-    return await Data.importModule(`components/optional-lib/${name}.js`)
-  },
-
   async importCfg (key) {
-    let sysCfg = await Data.importModule(`config/system/${key}_system.js`)
-    let diyCfg = await Data.importModule(`config/${key}.js`)
+    let sysCfg = await Data.importModule(`config/system/${key}_system.js`, 'miao')
+    let diyCfg = await Data.importModule(`config/${key}.js`, 'miao')
     if (diyCfg.isSys) {
-      console.error(`miao-plugin: config/${key}.js无效，已忽略`)
+      console.error(`biscuit-plugin: config/${key}.js无效，已忽略`)
       console.error(`如需配置请复制config/${key}_default.js为config/${key}.js，请勿复制config/system下的系统文件`)
       diyCfg = {}
     }
@@ -193,6 +240,30 @@ let Data = {
         return arguments[idx]
       }
     }
+  },
+
+  async forEach (data, fn) {
+    if (lodash.isArray(data)) {
+      for (let idx = 0; idx < data.length; idx++) {
+        let ret = fn(data[idx], idx)
+        ret = Data.isPromise(ret) ? await ret : ret
+        if (ret === false) {
+          break
+        }
+      }
+    } else if (lodash.isPlainObject(data)) {
+      for (const idx in data) {
+        let ret = fn(data[idx], idx)
+        ret = Data.isPromise(ret) ? await ret : ret
+        if (ret === false) {
+          break
+        }
+      }
+    }
+  },
+
+  isPromise (data) {
+    return util.types.isPromise(data)
   },
 
   // 循环字符串回调

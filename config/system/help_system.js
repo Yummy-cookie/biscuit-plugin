@@ -6,7 +6,7 @@
 * */
 export const helpCfg = {
   title: '饼干帮助',
-  subTitle: 'biscuit-bot && biscuit-Plugin',
+  subTitle: 'Yunzai-Bot && biscuit-Plugin',
   columnCount: 3,
   colWidth: 265,
   theme: 'all',
@@ -15,12 +15,11 @@ export const helpCfg = {
     fontColor: '#ceb78b',
     descColor: '#eee',
     contBgColor: 'rgba(6, 21, 31, .5)',
-    contBgBlur: 4,
+    contBgBlur: 3,
     headerBgColor: 'rgba(6, 21, 31, .4)',
     rowBgColor1: 'rgba(6, 21, 31, .2)',
     rowBgColor2: 'rgba(6, 21, 31, .35)'
-  },
-  bgBlur: false
+  }
 }
 
 export const helpList = [
