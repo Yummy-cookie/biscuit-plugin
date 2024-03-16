@@ -9,7 +9,7 @@
 // 帮助配置
 export const helpCfg = {
   // 帮助标题
-  title: '喵喵帮助',
+  title: '饼干帮助',
 
   // 帮助副标题
   subTitle: 'Yunzai-Bot & Biscuit-Plugin',
