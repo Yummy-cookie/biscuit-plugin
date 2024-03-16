@@ -13,7 +13,7 @@ const logger = {
 
 async function loadApps() {
   try {
-    const appDir = './plugins/biscuit-plugin/apps';
+    const appDir = path.join(__dirname, 'apps');
     const appFiles = await fs.readdir(appDir);
     const appPromises = appFiles
       .filter((file) => file.endsWith('.js'))
