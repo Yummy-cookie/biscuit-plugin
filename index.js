@@ -1,38 +1,33 @@
-import fs from "node:fs/promises";
+import fs from 'node:fs';
 import chalk from 'chalk';
-import path from 'path';
+import { Version } from './components/index.js';
 
-const logger = {
-  info: (message) => console.log(chalk.cyan(message)),
-  error: (message) => console.error(chalk.red(message)),
-  red: chalk.red,
-  yellow: chalk.yellow,
-  cyan: chalk.cyan,
-  magenta: chalk.magenta
-};
+let ret = []
 
-async function loadApps() {
-  try {
-    const appDir = path.join(__dirname, 'apps');
-    const appFiles = await fs.readdir(appDir);
-    const appPromises = appFiles
-      .filter((file) => file.endsWith('.js'))
-      .map((file) => import(path.join(appDir, file)));
+const files = fs
+  .readdirSync('./plugins/biscuit-plugin/apps')
+  .filter((file) => file.endsWith('.js'))
 
-    const appResults = await Promise.all(appPromises);
+files.forEach((file) => {
+  ret.push(import(`./apps/${file}`))
+})
 
-    const apps = {};
-    for (let i = 0; i < appResults.length; i++) {
-      const name = appFiles[i].replace('.js', '');
-      apps[name] = appResults[i][Object.keys(appResults[i])[0]];
-    }
+ret = await Promise.allSettled(ret)
 
-    return apps;
-  } catch (error) {
-    logger.error(`载入插件错误：${logger.red('biscuit-plugin')}`);
-    logger.error(error);
-    return {};
+let apps = {}
+for (let i in files) {
+  let name = files[i].replace('.js', '')
+
+  if (ret[i].status != 'fulfilled') {
+    logger.error(`载入插件错误：${logger.red(name)}`)
+    logger.error(ret[i].reason)
+    continue
   }
+  apps[name] = ret[i].value[Object.keys(ret[i].value)[0]]
 }
 
-export const apps = await loadApps();
+logger.info(chalk.blue('----------\(≧▽≦)/---------'))
+logger.info(chalk.blue(`饼干插件${Version.ver}载入成功`))
+logger.info(chalk.blue(`发帮助解锁更多内容`))
+logger.info(chalk.blue(`---------------------`));
+export { apps }
