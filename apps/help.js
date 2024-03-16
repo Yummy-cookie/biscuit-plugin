@@ -9,13 +9,13 @@ let app = App.init({
 
 app.reg({
   help: {
-    rule: /^#?(饼干)?(命令|帮助|菜单|help|说明|功能|指令|使用说明)$/,
-    fn: biscuit.render,
+    rule: '^#?(biscuit|饼干)(插件)?帮助$',
+    fn: Help.render,
     desc: '【#帮助】 #饼干帮助'
   },
   version: {
-    rule: /^#?饼干版本$/,
-    fn: biscuit.version,
+    rule: '^#?饼干版本$',
+    fn: Help.version,
     desc: '【#帮助】 饼干版本介绍'
   }
 })
