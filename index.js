@@ -2,17 +2,22 @@ import fs from "node:fs/promises";
 import chalk from 'chalk';
 import path from 'path';
 
-logger.info(chalk.cyan('----------\(≧▽≦)/---------'));
-logger.info(chalk.yellow(`biscuit-plugin初始化~`));
-logger.info(chalk.yellow(`发送饼干帮助解锁功能哦~`));
-logger.info(chalk.magenta('-------------------------'));
+const logger = {
+  info: (message) => console.log(chalk.cyan(message)),
+  error: (message) => console.error(chalk.red(message)),
+  red: chalk.red,
+  yellow: chalk.yellow,
+  cyan: chalk.cyan,
+  magenta: chalk.magenta
+};
 
 async function loadApps() {
   try {
-    const appFiles = await fs.readdir('./plugins/biscuit-plugin/apps');
+    const appDir = './plugins/biscuit-plugin/apps';
+    const appFiles = await fs.readdir(appDir);
     const appPromises = appFiles
       .filter((file) => file.endsWith('.js'))
-      .map((file) => import(`./apps/${file}`));
+      .map((file) => import(path.join(appDir, file)));
 
     const appResults = await Promise.all(appPromises);
 
@@ -24,7 +29,7 @@ async function loadApps() {
 
     return apps;
   } catch (error) {
-    logger.error(`载入插件错误：${logger.red(name)}`);
+    logger.error(`载入插件错误：${logger.red('biscuit-plugin')}`);
     logger.error(error);
     return {};
   }
