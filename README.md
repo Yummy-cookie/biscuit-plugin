@@ -1,5 +1,5 @@
 ![动态访问量](https://count.kjchmc.cn/get/@biscuit-plugin?theme=rule34)<br>
-[![Gitee](https://img.shields.io/badge/Gitee-饼干插件-black?style=flat-square&logo=gitee)](https://gitee.com/Yummy-cookie/biscuit-plugin)  [![Group](https://img.shields.io/badge/群号-580716131-red?style=flat-square&logo=GroupMe&logoColor=white)](https://qm.qq.com/q/Kz1rSpPlC0) <a href='https://gitee.com/Yummy-cookie/biscuit-plugin/stargazers'><img src='https://gitee.com/Yummy-cookie/biscuit-plugin/badge/star.svg?theme=dark' alt='star'></img></a>
+[![Gitee](https://img.shields.io/badge/Gitee-饼干插件-black?style=flat-square&logo=gitee)](https://gitee.com/Yummy-cookie/biscuit-plugin)  [![Group](https://img.shields.io/badge/群号-959731861-red?style=flat-square&logo=GroupMe&logoColor=white)](https://qm.qq.com/q/hTb21mBxcs) <a href='https://gitee.com/Yummy-cookie/biscuit-plugin/stargazers'><img src='https://gitee.com/Yummy-cookie/biscuit-plugin/badge/star.svg?theme=dark' alt='star'></img></a>
 
 # biscuit-plugin
 
@@ -9,7 +9,7 @@
 
 求求点个**Star**,谢谢
 
-[加入聊天群①](https://qm.qq.com/q/MFPCJgEMEK)
+[加入聊天群①](https://qm.qq.com/q/hTb21mBxcs)
 
 ![help](./resources/help/help.png)
 
@@ -39,4 +39,4 @@ pnpm install --filter=biscuit-plugin
 ## 预告&其他
 
 - 暂时没有，可以询问我，然后添加
-- 赞助[点我跳转](https://xn--fwt286fa722s.icu/)(记得备注自己)
+- 赞助[点我跳转](https://xn--fwt286fa722s.cn/)(记得备注自己)
