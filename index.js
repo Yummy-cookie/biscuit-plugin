@@ -27,7 +27,7 @@ for (let i in files) {
 }
 
 logger.info(chalk.blue('----------\(≧▽≦)/---------'))
-logger.info(chalk.blue(`饼干插件${Version.ver}载入成功`))
+logger.info(chalk.blue(`饼干插件${Version.version}载入成功`))
 logger.info(chalk.blue(`发帮助解锁更多内容`))
 logger.info(chalk.blue(`---------------------`));
 export { apps }
