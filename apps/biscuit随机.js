@@ -11,7 +11,7 @@ export class PixivPlugin extends plugin {
             priority: 5000,
             rule: [
                 {
-                    reg: '^#随机涩图',
+                    reg: '^#来份涩图',
                     func: 'sendPixivImage'
                 }
             ]
