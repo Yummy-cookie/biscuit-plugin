@@ -7,6 +7,8 @@
 
 一些工具 & 娱乐
 
+[√] 适配v4
+
 求求点个**Star**,谢谢
 
 [加入聊天群①](https://qm.qq.com/q/Uw1czuajw6)
@@ -29,7 +31,7 @@ git clone --depth=1 https://gitee.com/Yummy-cookie/biscuit-plugin.git ./plugins/
 ## 安装依赖
 
 ```
-pnpm install -p
+pnpm install
 ```
 两种安装方式
 ```
