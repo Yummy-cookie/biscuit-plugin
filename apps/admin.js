@@ -8,7 +8,7 @@ import fetch from 'node-fetch'
 
 let keys = lodash.map(Cfg.getCfgSchemaMap(), (i) => i.key)
 let app = App.init({
-  id: 'admin',
+  id: 'biscuitadmin',
   name: '饼干设置',
   desc: '饼干设置'
 })
