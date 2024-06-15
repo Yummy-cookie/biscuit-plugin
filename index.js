@@ -1,33 +1,48 @@
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
+import path from 'path';
 import chalk from 'chalk';
 import { Version } from './components/index.js';
 
-let ret = []
+const loadApps = async () => {
+  try {
+    const folderPath = './plugins/biscuit-plugin/apps';
 
-const files = fs
-  .readdirSync('./plugins/biscuit-plugin/apps')
-  .filter((file) => file.endsWith('.js'))
+    const files = await fs.readdir(folderPath);
+    const filteredFiles = files.filter((file) => file.endsWith('.js'));
 
-files.forEach((file) => {
-  ret.push(import(`./apps/${file}`))
-})
+    const importPromises = filteredFiles.map(async (file) => {
+      try {
+        const modulePath = path.resolve(folderPath, file);
+        const module = await import(modulePath);
+        return { file, module };
+      } catch (error) {
+        return { file, error };
+      }
+    });
 
-ret = await Promise.allSettled(ret)
+    const results = await Promise.allSettled(importPromises);
 
-let apps = {}
-for (let i in files) {
-  let name = files[i].replace('.js', '')
+    const apps = {};
+    results.forEach((result) => {
+      const name = result.value.file.replace('.js', '');
+      if (result.status === 'fulfilled') {
+        apps[name] = result.value.module[Object.keys(result.value.module)[0]];
+      } else {
+        logger.error(`载入插件错误：${logger.red(name)}`);
+        logger.error(result.reason);
+      }
+    });
 
-  if (ret[i].status != 'fulfilled') {
-    logger.error(`载入插件错误：${logger.red(name)}`)
-    logger.error(ret[i].reason)
-    continue
+    logger.info(chalk.blue('----------\(≧▽≦)/---------'));
+    logger.info(chalk.blue(`饼干插件${Version.version}载入成功`));
+    logger.info(chalk.blue(`发帮助解锁更多内容`));
+    logger.info(chalk.blue(`---------------------`));
+
+    return apps;
+  } catch (error) {
+    logger.error('无法读取插件文件夹:', error);
+    return {};
   }
-  apps[name] = ret[i].value[Object.keys(ret[i].value)[0]]
-}
+};
 
-logger.info(chalk.blue('----------\(≧▽≦)/---------'))
-logger.info(chalk.blue(`饼干插件${Version.version}载入成功`))
-logger.info(chalk.blue(`发帮助解锁更多内容`))
-logger.info(chalk.blue(`---------------------`));
-export { apps }
+export default loadApps;
