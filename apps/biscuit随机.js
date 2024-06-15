@@ -1,43 +1,42 @@
 import plugin from '../../../lib/plugins/plugin.js';
 import fetch from 'node-fetch';
 
-export class PixivPlugin extends plugin {
+
+export class example extends plugin {
     constructor() {
         super({
-            name: 'PixivPlugin',
-            description: '发送包含图片和文字的聊天记录',
+            name: 'Pixiv',
+            dsc: 'example',
             event: 'message',
             priority: 5000,
             rule: [
                 {
                     reg: '^#来份涩图',
-                    func: 'sendPixivImage'
+                    fnc: 'fetchPixivImage'
                 }
             ]
         });
     }
 
-    async sendPixivImage(e) {
+    async fetchPixivImage(e) {
         try {
-            const response = await fetch('https://image.anosu.top/pixiv/json');
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+            const match = e.msg.match(/^#来份涩图/);
+
+            const keyword = match[1];
+            const apiUrl = `https://image.anosu.top/pixiv/json`;
+
+            const response = await fetch(apiUrl);
             const data = await response.json();
 
-            const imageData = data[0];
-            const { title, tags, url } = imageData;
+            const { title, tags, url } = data[0];
 
-            await e.reply([
-                `Title: ${title}`,
-                `Tags: ${tags.join(', ')}`
-            ]);
+            const textMsg = `${title}\nTags: ${tags.join(', ')}`;
+            await e.reply(textMsg);
 
-  
-            await e.reply(url);
+            await e.sendImage(url);
         } catch (error) {
-            console.error('Error fetching or sending image:', error);
-            await e.reply('获取或发送图片时出现错误，请稍后再试。');
+            console.error(error);
+            await e.reply('获取Pixiv图片信息失败');
         }
     }
 }

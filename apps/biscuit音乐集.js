@@ -1,5 +1,4 @@
 import plugin from '../../../lib/plugins/plugin.js'
-import { segment } from 'oicq'
 
 
 export class example extends plugin {
@@ -10,12 +9,12 @@ export class example extends plugin {
 			event: 'message',
 			priority: 5000,
 			rule: [{
-					reg: '^#?随机网易云.*$',
-					fnc: 'biscuitmusic'
-				},{
-				reg: '^#?随机动漫音乐.*$',
-					fnc: 'biscuitmusic1'
-					}
+				reg: '^#?随机网易云$',
+				fnc: 'biscuitmusic'
+			}, {
+				reg: '^#?随机动漫音乐$',
+				fnc: 'biscuitmusic1'
+			}
 			]
 		})
 	}
