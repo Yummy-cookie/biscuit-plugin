@@ -1,5 +1,4 @@
 import plugin from '../../../lib/plugins/plugin.js';
-import { segment } from 'oicq';
 import fetch from 'node-fetch';
 
 export class PixivPlugin extends plugin {
@@ -18,35 +17,25 @@ export class PixivPlugin extends plugin {
         });
     }
 
-    sendPixivImage(e) {
-        fetch('https://image.anosu.top/pixiv/json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                let imageData = data[0];
-                let title = imageData.title;
-                let tags = imageData.tags.join(', ');
-                let imageUrl = imageData.url;
+    async sendPixivImage(e) {
+        try {
+            const response = await fetch('https://image.anosu.top/pixiv/json');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
 
-                let message = [
-                    segment.text(`Title: ${title}\nTags: ${tags}\n`),
-                    segment.image(imageUrl)
-                ];
+            const imageData = data[0];
+            const title = imageData.title;
+            const tags = imageData.tags.join(', ');
+            const imageUrl = imageData.url;
 
-                e.reply(message, (err) => {
-                    if (err) {
-                        console.error('Error sending message:', err);
-                        e.reply('发送图片时出现错误，请稍后再试。');
-                    }
-                });
-            })
-    .catch(error => {
-                console.error('Error fetching image:', error);
-                e.reply('获取图片时出现错误，请稍后再试。');
-            });
+            const message = `Title: ${title}\nTags: ${tags}\n${imageUrl}`;
+
+            await e.reply(message);
+        } catch (error) {
+            console.error('Error fetching or sending image:', error);
+            await e.reply('获取或发送图片时出现错误，请稍后再试。');
+        }
     }
 }

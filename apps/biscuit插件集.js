@@ -1,5 +1,5 @@
 import plugin from '../../../lib/plugins/plugin.js';
-import { segment } from 'oicq';
+import fetch from 'node-fetch'; // 导入 node-fetch 用于发起 HTTP 请求
 
 export class example extends plugin {
 	constructor() {
@@ -50,16 +50,16 @@ export class example extends plugin {
 			const msg = [
 				`饼干查询域名：${url}\n`,
 				'查询域名ip:',
-				segment.text(ip),
+				ip,
 				'\n',
 				'服务器位置:',
-				segment.text(location),
+				location,
 				'\n',
 				'平均速度:',
-				segment.text(ping_avg)
+				ping_avg
 			];
 
-			await e.reply(msg);
+			await e.reply(msg.join('')); 
 		} catch (error) {
 			console.error(error);
 			await e.reply('ping错误');
@@ -67,8 +67,13 @@ export class example extends plugin {
 	}
 
 	async dailynews(e) {
-		this.e.reply(segment.image('https://api.avdgw.com/api/mr60s?key=VCr6xhxtDgNtd1fV7UOIKj15yi'));
-		return true;
+		try {
+			await this.e.reply('https://api.avdgw.com/api/mr60s?key=VCr6xhxtDgNtd1fV7UOIKj15yi');
+			return true;
+		} catch (error) {
+			console.error(error);
+			await e.reply('请求失败');
+		}
 	}
 
 	async ynews(e) {
@@ -80,7 +85,6 @@ export class example extends plugin {
 				return;
 			}
 
-			const url = match[1];
 			const apiUrl = `https://api.pearktrue.cn/api/shadiao/`;
 
 			const response = await fetch(apiUrl);
@@ -88,9 +92,9 @@ export class example extends plugin {
 
 			const { title, content } = responseData.data;
 
-			const msg = [segment.text(title), '\n', segment.text(content)];
+			const msg = [title, '\n', content];
 
-			await e.reply(msg);
+			await e.reply(msg.join(''));
 		} catch (error) {
 			console.error(error);
 			await e.reply('请求失败');
