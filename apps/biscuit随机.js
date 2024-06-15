@@ -18,30 +18,35 @@ export class PixivPlugin extends plugin {
         });
     }
 
-    async sendPixivImage(e) {
-        try {
-            // 发送请求获取图片数据
-            let response = await fetch('https://image.anosu.top/pixiv/json');
-            let data = await response.json();
-            let imageData = data[0];
+    sendPixivImage(e) {
+        fetch('https://image.anosu.top/pixiv/json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                let imageData = data[0];
+                let title = imageData.title;
+                let tags = imageData.tags.join(', ');
+                let imageUrl = imageData.url;
 
-            // 解析数据
-            let title = imageData.title;
-            let tags = imageData.tags.join(', ');
-            let imageUrl = imageData.url;
+                let message = [
+                    segment.text(`Title: ${title}\nTags: ${tags}\n`),
+                    segment.image(imageUrl)
+                ];
 
-            // 创建消息
-            let message = [
-                segment.text(`Title: ${title}\nTags: ${tags}\n`),
-                segment.image(imageUrl)
-            ];
-
-            // 发送消息
-            await e.reply(message);
-        } catch (error) {
-            // 错误处理
-            console.error('Error fetching or sending image:', error);
-            await e.reply('获取图片时出现错误，请稍后再试。');
-        }
+                e.reply(message, (err) => {
+                    if (err) {
+                        console.error('Error sending message:', err);
+                        e.reply('发送图片时出现错误，请稍后再试。');
+                    }
+                });
+            })
+    .catch(error => {
+                console.error('Error fetching image:', error);
+                e.reply('获取图片时出现错误，请稍后再试。');
+            });
     }
 }

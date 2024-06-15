@@ -1,11 +1,8 @@
 import fs from 'node:fs';
 import lodash from 'lodash';
-import { exec, execSync } from 'child_process';
-import { Cfg, Common, Data, Version, App } from '../components/index.js';
-import makemsg from '../../../lib/common/common.js';
-import fetch from 'node-fetch';
+import { Cfg, Common, Version, App } from '../components/index.js';
 
-let keys = lodash.map(Cfg.getCfgSchemaMap(), (i) => i.key);
+let keys = lodash.map(Cfg.getCfgSchemaMap(), 'key');
 let app = App.init({
   id: 'biscuitadmin',
   name: '饼干设置',
@@ -28,6 +25,11 @@ const _path = process.cwd();
 const resPath = `${_path}/plugins/biscuit-plugin/resources/`;
 const plusPath = `${resPath}/miao-res-plus/`;
 
+/**
+ * 检查是否有权限执行命令
+ * @param {object} e - 消息事件对象
+ * @returns {boolean} - 是否有权限
+ */
 const checkAuth = async function (e) {
   if (!e.isMaster) {
     await e.reply(`只有主人才能命令饼干哦~\n(*/ω＼*)`);
@@ -36,31 +38,26 @@ const checkAuth = async function (e) {
   return true;
 };
 
+/**
+ * 处理系统设置命令
+ * @param {object} e - 消息事件对象
+ * @returns {boolean}
+ */
 async function sysCfg(e) {
   if (!await checkAuth(e)) {
     return true;
   }
 
-  let cfgReg = sysCfgReg;
-  let regRet = cfgReg.exec(e.msg);
-  let cfgSchemaMap = Cfg.getCfgSchemaMap();
-
+  let regRet = sysCfgReg.exec(e.msg);
   if (!regRet) {
     return true;
   }
 
   if (regRet[1]) {
-    // 设置模式
     let val = regRet[2] || '';
+    let cfgSchema = Cfg.getCfgSchemaMap()[regRet[1]];
 
-    let cfgSchema = cfgSchemaMap[regRet[1]];
-    if (cfgSchema.input) {
-      val = cfgSchema.input(val);
-    } else if (cfgSchema.type === 'str') {
-      val = (val || cfgSchema.def) + '';
-    } else {
-      val = cfgSchema.type === 'num' ? (val * 1 || cfgSchema.def) : !/关闭/.test(val);
-    }
+    val = parseValue(cfgSchema, val);
     Cfg.set(cfgSchema.cfgKey, val);
   }
 
@@ -75,4 +72,20 @@ async function sysCfg(e) {
     imgPlus,
     isMiao: Version.isMiao
   }, { e, scale: 1.4 });
+}
+
+/**
+ * 解析配置值
+ * @param {object} cfgSchema - 配置架构对象
+ * @param {string} val - 输入值
+ * @returns {string|number|boolean} - 解析后的值
+ */
+function parseValue(cfgSchema, val) {
+  if (cfgSchema.input) {
+    return cfgSchema.input(val);
+  } else if (cfgSchema.type === 'str') {
+    return (val || cfgSchema.def) + '';
+  } else {
+    return cfgSchema.type === 'num' ? (val * 1 || cfgSchema.def) : !/关闭/.test(val);
+  }
 }
