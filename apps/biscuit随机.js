@@ -26,13 +26,15 @@ export class PixivPlugin extends plugin {
             const data = await response.json();
 
             const imageData = data[0];
-            const title = imageData.title;
-            const tags = imageData.tags.join(', ');
-            const imageUrl = imageData.url;
+            const { title, tags, url } = imageData;
 
-            const message = `Title: ${title}\nTags: ${tags}\n${imageUrl}`;
+            await e.reply([
+                `Title: ${title}`,
+                `Tags: ${tags.join(', ')}`
+            ]);
 
-            await e.reply(message);
+  
+            await e.reply(url);
         } catch (error) {
             console.error('Error fetching or sending image:', error);
             await e.reply('获取或发送图片时出现错误，请稍后再试。');
