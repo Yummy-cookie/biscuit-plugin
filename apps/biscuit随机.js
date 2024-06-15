@@ -18,23 +18,30 @@ export class PixivPlugin extends plugin {
         });
     }
 
-
     async sendPixivImage(e) {
-        let response = await fetch('https://image.anosu.top/pixiv/json');
-        let data = await response.json();
-        let imageData = data[0];
+        try {
+            // 发送请求获取图片数据
+            let response = await fetch('https://image.anosu.top/pixiv/json');
+            let data = await response.json();
+            let imageData = data[0];
 
+            // 解析数据
+            let title = imageData.title;
+            let tags = imageData.tags.join(', ');
+            let imageUrl = imageData.url;
 
-        let title = imageData.title;
-        let tags = imageData.tags.join(', ');
-        let imageUrl = imageData.url;
+            // 创建消息
+            let message = [
+                segment.text(`Title: ${title}\nTags: ${tags}\n`),
+                segment.image(imageUrl)
+            ];
 
-
-        let message = [
-            segment.text(`Title: ${title}\nTags: ${tags}\n`),
-            segment.image(imageUrl)
-        ];
-
-        await e.reply(message);
+            // 发送消息
+            await e.reply(message);
+        } catch (error) {
+            // 错误处理
+            console.error('Error fetching or sending image:', error);
+            await e.reply('获取图片时出现错误，请稍后再试。');
+        }
     }
 }
