@@ -1,5 +1,5 @@
- [![Star History Chart](https://api.star-history.com/svg?repos=biscuit-plugin&type=Date)](https://star-history.com/#biscuit-plugin&Date)
- 
+[![Star History Chart](https://api.star-history.com/svg?repos=biscuit-plugin&type=Date)](https://star-history.com/#biscuit-plugin&Date)
+
 ![动态访问量](https://count.kjchmc.cn/get/@biscuit-plugin?theme=rule34)<br>
 
 [![Group](https://img.shields.io/badge/群号-691477645-red?style=flat-square&logo=GroupMe&logoColor=white)](https://qm.qq.com/q/lKetgTsYsS) 
