@@ -51,6 +51,8 @@ pnpm install --filter=biscuit-plugin
 
 ### 链接
 
+- [gitee(本仓库)](https://gitee.com/Yummy-cookie/biscuit-plugin)
+- [github(本仓库)](https://github.com/Yummy-cookie/biscuit-plugin)
 - [云崽](https://github.com/Le-niao/Yunzai-Bot)
 - [插件库](https://github.com/yhArcadia/Yunzai-Bot-plugins-index)
 
