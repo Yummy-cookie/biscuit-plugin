@@ -2,9 +2,9 @@
 [![Group](https://img.shields.io/badge/群号-691477645-red?style=flat-square&logo=GroupMe&logoColor=white)](https://qm.qq.com/q/lKetgTsYsS) 
 <div align=center>
  <img src ="https://img.shields.io/github/stars/Yummy-cookie/biscuit-biscuit?"/>
- <img src ="https://img.shields.io/github/issues//Yummy-cookie/biscuit-biscuit?logo=github"/>
- <img src ="https://img.shields.io/github/license//Yummy-cookie/biscuit-biscuit"/>
- <img src ="https://img.shields.io/github/languages/top//Yummy-cookie/biscuit-biscuit?logo=github"/>
+ <img src ="https://img.shields.io/github/issues/Yummy-cookie/biscuit-biscuit?logo=github"/>
+ <img src ="https://img.shields.io/github/license/Yummy-cookie/biscuit-biscuit"/>
+ <img src ="https://img.shields.io/github/languages/top/Yummy-cookie/biscuit-biscuit?logo=github"/>
 </div>
 # biscuit-plugin
 
