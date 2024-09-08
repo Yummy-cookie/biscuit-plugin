@@ -68,7 +68,7 @@ pnpm install --filter=biscuit-plugin
 
 - 素材来源于网络，仅供交流学习使用
 - 严禁用于商业和非法用途
-- 暂无群号，出现问题可以提交issue（建议github，因为有邮件提醒）
+- 出现问题可以提交issue（建议github，因为有邮件提醒）或者加qq群
 - 最后求个star~
 
 
