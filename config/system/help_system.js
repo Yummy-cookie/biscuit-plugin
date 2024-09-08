@@ -27,7 +27,11 @@ export const helpCfg = {
 export const helpList = [
 {
   group: '饼干插件功能',
-  list: []
+  list: [{
+    icon: 72,
+    title: '#ping (ip/域名)',
+    desc: '功能'
+  }]
 },{
   group: '其他查询指令',
   list: [{
