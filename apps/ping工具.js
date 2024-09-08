@@ -1,64 +1,54 @@
-import axios from 'axios';
+import plugin from '../../../lib/plugins/plugin.js';
+import fetch from 'node-fetch';
 
-export default class PingPlugin {
-  constructor({
-    name = "ping",
-    dsc = "Ping IP 地址",
-    event = "message",
-    priority = 5000,
-    rule = [{ reg: /^#ping\s+(\S+)/, fnc: "handlePing" }]
-  }) {
-    this.name = name;
-    this.dsc = dsc;
-    this.event = event;
-    this.priority = priority;
-    this.rule = rule;
-  }
-
-  // 假设 this.e 和 this.reply 是在外部上下文中定义的
-  setContext(e, reply) {
-    this.e = e;
-    this.reply = reply;
-  }
-
-  async handlePing() {
-    const match = this.e.msg.match(this.rule[0].reg);
-    
-    if (!match || match.length < 2) {
-      return this.reply("请提供一个有效的 IP 地址或域名。");
+export class PingPlugin extends plugin {
+    constructor() {
+        super({
+            name: 'Ping Plugin',
+            dsc: 'Ping a domain or IP address',
+            event: 'message',
+            priority: 2000,
+            rule: [
+                {
+                    reg: '^#?(ping|PING) (.+)$',
+                    fnc: 'ping'
+                }
+            ]
+        });
     }
-  
-    const ipOrHost = match[1];
-  
-    try {
-      const response = await axios.get(`https://api.gumengya.com/Api/Ping?format=json&ip=${ipOrHost}&type=ipv4`);
-      const data = response.data;
-  
-      if (response.status === 200) {
-        if (data && data.code === 200) {
-          const result = `
-            Ping 结果:
-            - IP: ${data.data.ip}
-            - 节点: ${data.data.node}
-            - 主机: ${data.data.host}
-            - 域名 IP: ${data.data.domain_ip}
-            - 最小延迟: ${data.data.ping_min}
-            - 平均延迟: ${data.data.ping_avg}
-            - 最大延迟: ${data.data.ping_max}
-            - 位置: ${data.data.location}
-          `;
-          this.reply(result);
-        } else {
-          // 返回 API 错误消息
-          this.reply(`Ping 失败: ${data.msg || '请检查 IP 地址或域名。'}`);
+
+    async ping() {
+        const input = this.e.msg.replace(/^#?(ping|PING) /, '').trim();
+        if (!input) {
+            return await this.e.reply('请输入要 ping 的域名或 IP 地址。');
         }
-      } else {
-        this.reply('发生未知错误，请稍后再试。');
-      }
-    } catch (error) {
-      console.error(error);
-      // 捕获网络错误或其他错误
-      this.reply('在尝试 ping IP 地址或域名时发生错误，请稍后再试。');
+
+        const url = `https://api.gumengya.com/Api/Ping?format=json&ip=${encodeURIComponent(input)}&type=ipv4`;
+        
+        try {
+            const response = await fetch(url);
+            const result = await response.json();
+
+            if (result.code === 200) {
+                const { data } = result;
+                const reply = `
+                    **Ping 结果:**
+                    - IP: ${data.ip}
+                    - 节点: ${data.node}
+                    - 主机: ${data.host}
+                    - PING 信息: ${data.domain_ip}
+                    - 最小延迟: ${data.ping_min}
+                    - 平均延迟: ${data.ping_avg}
+                    - 最大延迟: ${data.ping_max}
+                    - 位置: ${data.location}
+                `;
+                await this.e.reply(reply);
+            } else {
+                await this.e.reply(`错误: ${result.msg}`);
+            }
+        } catch (error) {
+            console.error(error);
+            await this.e.reply('请求失败，请稍后再试。');
+        }
     }
-  }
 }
