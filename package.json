@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"type": "module",
 	"dependencies": {
-		"silk-wasm": "^3.4.0"
+		"silk-wasm": "^3.4.0",
+		"axios": "^1.7.7"
 	}
 }
