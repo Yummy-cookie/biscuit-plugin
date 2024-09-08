@@ -61,9 +61,6 @@ pnpm install --filter=biscuit-plugin
 - [云崽](https://github.com/Le-niao/Yunzai-Bot)
 - [插件库](https://github.com/yhArcadia/Yunzai-Bot-plugins-index)
 
-### 指令
-
-
 ### 其他
 
 - 素材来源于网络，仅供交流学习使用
