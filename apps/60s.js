@@ -24,29 +24,28 @@ export class DailyImagePlugin extends plugin {
             ]
         });
 
+        this.ensureConfigFile();
         this.groupId = this.loadGroupId(); 
         this.startDailyImageTask(); 
     }
 
-    loadGroupId() {
-        if (fs.existsSync(CONFIG_PATH)) {
-            const file = fs.readFileSync(CONFIG_PATH, 'utf8');
-            const config = YAML.parse(file);
-            return config.groupId || null; 
-        } else {
-            // 创建默认配置文件
+    ensureConfigFile() {
+        if (!fs.existsSync(CONFIG_PATH)) {
             const defaultConfig = { groupId: null };
             fs.writeFileSync(CONFIG_PATH, YAML.stringify(defaultConfig), 'utf8');
-            return null;
         }
+    }
+
+    loadGroupId() {
+        const file = fs.readFileSync(CONFIG_PATH, 'utf8');
+        const config = YAML.parse(file);
+        return config.groupId || null; 
     }
 
     saveGroupId(groupId) {
         let config = {};
-        if (fs.existsSync(CONFIG_PATH)) {
-            const file = fs.readFileSync(CONFIG_PATH, 'utf8');
-            config = YAML.parse(file);
-        }
+        const file = fs.readFileSync(CONFIG_PATH, 'utf8');
+        config = YAML.parse(file);
         config.groupId = groupId; 
         fs.writeFileSync(CONFIG_PATH, YAML.stringify(config), 'utf8'); 
     }
@@ -65,7 +64,6 @@ export class DailyImagePlugin extends plugin {
     }
 
     async sendImage() {
-        // 直接发送图片，不检查群号
         if (!this.groupId) {
             return await this.e.reply('群号未设置，无法发送图片。请先设置群号。');
         }
@@ -116,6 +114,6 @@ export class DailyImagePlugin extends plugin {
     }
 
     async sendGroupImage(groupId, imageUrl) {
-        await this.e.reply({ type: 'group', groupId: groupId, imageUrl: imageUrl });
+        await this.e.reply({ type: 'group', groupId: groupId, image: imageUrl });
     }
 }
