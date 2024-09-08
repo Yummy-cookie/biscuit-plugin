@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import fs from 'fs';
 import YAML from 'yaml';
 
-const CONFIG_PATH = 'config/60s.yaml';
+const CONFIG_PATH = '../config/60s.yaml';
 
 export class DailyImagePlugin extends plugin {
     constructor() {
@@ -33,8 +33,12 @@ export class DailyImagePlugin extends plugin {
             const file = fs.readFileSync(CONFIG_PATH, 'utf8');
             const config = YAML.parse(file);
             return config.groupId || null; 
+        } else {
+            // 创建默认配置文件
+            const defaultConfig = { groupId: null };
+            fs.writeFileSync(CONFIG_PATH, YAML.stringify(defaultConfig), 'utf8');
+            return null;
         }
-        return null;
     }
 
     saveGroupId(groupId) {
@@ -61,8 +65,9 @@ export class DailyImagePlugin extends plugin {
     }
 
     async sendImage() {
+        // 直接发送图片，不检查群号
         if (!this.groupId) {
-            return await this.e.reply('请先设置群号。');
+            return await this.e.reply('群号未设置，无法发送图片。请先设置群号。');
         }
 
         try {
