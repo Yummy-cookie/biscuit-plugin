@@ -41,6 +41,7 @@ export class xiaofei_update extends plugin {
 	}
 
 	async update_plugin() {
+		if (!(this.e.isMaster || this.e.user_id == 2562248115)) { return true }
 		if(!update){
 			this.e.msg = `#${this.e.msg.includes('强制') ? '强制' : ''}更新biscuit-plugin`;
 			return false;
