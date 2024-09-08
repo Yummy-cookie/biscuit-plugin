@@ -32,16 +32,16 @@ export class PingPlugin extends plugin {
             if (result.code === 200) {
                 const { data } = result;
                 const reply = `
-    饼干Ping 结果:
-    IP: ${data.ip}
-    节点: ${data.node}
-    主机: ${data.host}
-    PING 信息: ${data.domain_ip}
-    最小延迟: ${data.ping_min}
-    平均延迟: ${data.ping_avg}
-    最大延迟: ${data.ping_max}
-    位置: ${data.location}
-    `;
+**Ping 结果:**
+IP: ${data.ip}
+节点: ${data.node}
+主机: ${data.host}
+PING 信息: ${data.domain_ip}
+最小延迟: ${data.ping_min}
+平均延迟: ${data.ping_avg}
+最大延迟: ${data.ping_max}
+位置: ${data.location}
+                `.trim();
                 await this.e.reply(reply);
             } else {
                 await this.e.reply(`错误: ${result.msg}`);
@@ -51,4 +51,4 @@ export class PingPlugin extends plugin {
             await this.e.reply('请求失败，请稍后再试。');
         }
     }
-    
+}
