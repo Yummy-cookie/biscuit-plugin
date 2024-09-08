@@ -65,3 +65,9 @@ pnpm install --filter=biscuit-plugin
 - 严禁用于商业和非法用途
 - 暂无群号，出现问题可以提交issue（建议github，因为有邮件提醒）
 - 最后求个star~
+
+
+## 赞助支持
+
+- 饼干： [饼干蓝蓝.cn](https://xn--fwt286fa722s.cn/)
+- 爱发电：<https://ifdian.net/a/yummy-cookie>
