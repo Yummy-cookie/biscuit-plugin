@@ -27,6 +27,11 @@ Yunzai-Bot V3 的插件
 git clone --depth=1 https://github.com/Yummy-cookie/biscuit-plugin.git ./plugins/biscuit-plugin/
 ```
 
+使用[github仓库(加速链接)](https://github.com/Yummy-cookie/biscuit-plugin)
+```bash
+git clone --depth=1 https://mirror.ghproxy.com/https://github.com/Yummy-cookie/biscuit-plugin.git ./plugins/biscuit-plugin/
+```
+
 使用[gitee仓库](https://gitee.com/Yummy-cookie/biscuit-plugin)(可能更新不及时)[因为是gitee同步github]
 ```bash
 git clone --depth=1 https://gitee.com/Yummy-cookie/biscuit-plugin.git ./plugins/biscuit-plugin/
