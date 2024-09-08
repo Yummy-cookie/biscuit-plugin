@@ -32,7 +32,7 @@ export class PingPlugin extends plugin {
             if (result.code === 200) {
                 const { data } = result;
                 const reply = `
-**Ping 结果:**
+饼干Ping 结果:
 IP: ${data.ip}
 节点: ${data.node}
 主机: ${data.host}
