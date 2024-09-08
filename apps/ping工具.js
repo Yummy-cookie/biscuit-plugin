@@ -15,19 +15,25 @@ export default class PingPlugin {
     this.rule = rule;
   }
 
+  // 假设 this.e 和 this.reply 是在外部上下文中定义的
+  setContext(e, reply) {
+    this.e = e;
+    this.reply = reply;
+  }
+
   async handlePing() {
     const match = this.e.msg.match(this.rule[0].reg);
     
     if (!match || match.length < 2) {
-      return this.reply("请提供一个有效的 IP 地址。");
+      return this.reply("请提供一个有效的 IP 地址或域名。");
     }
-
-    const ip = match[1];
-
+  
+    const ipOrHost = match[1];
+  
     try {
-      const response = await axios.get(`https://api.gumengya.com/Api/Ping?format=json&ip=${ip}&type=ipv4`);
+      const response = await axios.get(`https://api.gumengya.com/Api/Ping?format=json&ip=${ipOrHost}&type=ipv4`);
       const data = response.data;
-
+  
       if (response.status === 200) {
         if (data && data.code === 200) {
           const result = `
@@ -43,21 +49,16 @@ export default class PingPlugin {
           `;
           this.reply(result);
         } else {
-          this.reply('Ping 失败。请检查 IP 地址。');
+          // 返回 API 错误消息
+          this.reply(`Ping 失败: ${data.msg || '请检查 IP 地址或域名。'}`);
         }
-      } else if (response.status === 400) {
-        this.reply('请求失败，可能是 IP 地址格式不正确。');
       } else {
         this.reply('发生未知错误，请稍后再试。');
       }
     } catch (error) {
       console.error(error);
-      this.reply('在尝试 ping IP 地址时发生错误，请稍后再试。');
+      // 捕获网络错误或其他错误
+      this.reply('在尝试 ping IP 地址或域名时发生错误，请稍后再试。');
     }
-  }
-
-  reply(msg = "", quote = false, data = {}) {
-    if (!this.e?.reply || !msg) return false;
-    return this.e.reply(msg, quote, data);
   }
 }
