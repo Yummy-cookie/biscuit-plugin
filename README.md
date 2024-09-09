@@ -15,24 +15,32 @@
 Yunzai-Bot V3 的插件
 多功能饼干插件
 主要网络信息方面
+目前因为作者住院所以更新很慢
+
+### 仓库人员
+作者:Yummy-Cookie[Github](https://github.com/Yummy-cookie/)[Gitee](https://gitee.com/Yummy-cookie)
+吉祥物:
+- ArcticFox520(白狐)[Github](https://github.com/ArcticFox520)[Gitee](https://gitee.com/baihu433)
+- ElysiaMadoka(墨染希_OFFICIAL)[Github](https://github.com/Kaname520)[Gitee](https://gitee.com/ElysiaMadoka)
+- MEMZ(Ein süßer MEMZ)[Github](https://github.com/MEMZ2007)[Gitee](https://gitee.com/memz2007)
 
 ## 使用说明
 
 ### 安装
 
-在[yunzai-bot](https://gitee.com/Le-niao/Yunzai-Bot)文件夹根目录打开(win是git bash,linux直接git)
+在[Miao-Yunzai](https://github.com/yoimiya-kokomi/Miao-Yunzai)或[TRSS-Yunzai](https://github.com/TimeRainStarSky/Yunzai)文件夹根目录打开(win是git bash,linux直接git)
 
-使用[github仓库](https://github.com/Yummy-cookie/biscuit-plugin)
+使用[Github仓库](https://github.com/Yummy-cookie/biscuit-plugin)
 ```bash
 git clone --depth=1 https://github.com/Yummy-cookie/biscuit-plugin.git ./plugins/biscuit-plugin/
 ```
 
-使用[github仓库(加速链接)](https://github.com/Yummy-cookie/biscuit-plugin)
+使用[Github仓库(加速链接)](https://github.com/Yummy-cookie/biscuit-plugin)
 ```bash
 git clone --depth=1 https://mirror.ghproxy.com/https://github.com/Yummy-cookie/biscuit-plugin.git ./plugins/biscuit-plugin/
 ```
 
-使用[gitee仓库](https://gitee.com/Yummy-cookie/biscuit-plugin)(可能更新不及时)[因为是gitee同步github]
+使用[Gitee仓库](https://gitee.com/Yummy-cookie/biscuit-plugin)(可能更新不及时)[因为是Gitee同步Github]
 ```bash
 git clone --depth=1 https://gitee.com/Yummy-cookie/biscuit-plugin.git ./plugins/biscuit-plugin/
 ```
@@ -71,7 +79,7 @@ pnpm install --filter=biscuit-plugin
 
 ## 赞助支持
 
-- 饼干博客： [饼干蓝蓝.cn](https://xn--fwt286fa722s.cn/)
+- 饼干博客： [饼干蓝蓝.cn](https://xn--fwt286fa722s.cn/)[请备注自己的QQ号]
 - 爱发电：<https://ifdian.net/a/yummy-cookie>
 
 
