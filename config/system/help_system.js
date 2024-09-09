@@ -31,6 +31,10 @@ export const helpList = [
     icon: 72,
     title: '#ping (ip/域名)',
     desc: '功能'
+  },{
+    icon: 100,
+    title: '#看60s',
+    desc: '功能'
   }]
 },{
   group: '其他查询指令',
