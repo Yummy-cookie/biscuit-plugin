@@ -8,14 +8,14 @@ export const style = {
   // 描述文字颜色
   descColor: '#ffffff', // 亮白色
 
-  /* 面板整体底色，使用紫色渐变 */
-  contBgColor: 'linear-gradient(135deg, rgba(128, 0, 128, 0.55), rgba(75, 0, 130, 0.55))',
+  /* 面板整体底色，使用紫色，透明度为 40% */
+  contBgColor: 'rgba(128, 0, 128, 0.4)', // 紫色，40%透明度
 
   // 面板底图毛玻璃效果，数字越大越模糊，0-10，可为小数
   contBgBlur: 5, // 增加模糊效果
 
   // 板块标题栏底色，使用渐变
-  headerBgColor: 'linear-gradient(135deg, rgba(75, 0, 130, 0.8), rgba(128, 0, 128, 0.8))',
+  headerBgColor: 'rgba(75, 0, 130, 0.8)', // 靛蓝色，80%透明度
 
   // 帮助奇数行底色，使用透明度
   rowBgColor1: 'rgba(255, 255, 255, 0.1)', // 半透明白色
