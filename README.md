@@ -12,10 +12,10 @@
 # Biscuit-Plugin
 
 ### 介绍
-Yunzai-Bot V3 的插件
-多功能饼干插件
-主要网络信息方面
-目前因为作者住院所以更新很慢
+- Yunzai-Bot V3 的插件
+- 多功能饼干插件
+- 主要网络信息方面
+- 目前因为作者住院所以更新很慢
 
 ### 仓库人员
 作者:Yummy-Cookie[[Github]](https://github.com/Yummy-cookie/)-[[Gitee]](https://gitee.com/Yummy-cookie)
