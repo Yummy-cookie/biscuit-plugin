@@ -20,21 +20,12 @@ export class DailyImagePlugin extends plugin {
 
     async sendImage() {
         try {
-            const imageUrl = await this.fetchImage();
+            const imageUrl = 'https://api.ahfi.cn/api/MorningNews'; 
             await this.sendGroupImage(imageUrl);
         } catch (error) {
             console.error(error);
             await this.e.reply('发送图片失败，请稍后再试。');
         }
-    }
-
-    async fetchImage() {
-        const response = await fetch('https://api.ahfi.cn/api/MorningNews');
-        if (!response.ok) {
-            throw new Error('网络错误');
-        }
-        const data = await response.json();
-        return data.data;
     }
 
     async sendGroupImage(imageUrl) {
