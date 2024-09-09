@@ -1,6 +1,6 @@
 import plugin from '../../../lib/plugins/plugin.js';
 import fetch from 'node-fetch';
-import { segment } from 'oicq'; 
+import { segment } from 'oicq';
 
 export class DailyImagePlugin extends plugin {
     constructor() {
@@ -11,7 +11,7 @@ export class DailyImagePlugin extends plugin {
             priority: 2000,
             rule: [
                 {
-                    reg: '^#?看早安$',
+                    reg: '^#?看60s$',
                     fnc: 'sendImage'
                 }
             ]
@@ -22,10 +22,10 @@ export class DailyImagePlugin extends plugin {
         try {
             const imageUrl = 'https://api.ahfi.cn/api/MorningNews';
             const imageMessage = await this.getImageMessage(imageUrl);
-            await this.e.reply(imageMessage);
+            await this.reply(imageMessage); 
         } catch (error) {
             console.error(error);
-            await this.e.reply('发送图片失败，请稍后再试。');
+            await this.reply('发送图片失败，请稍后再试。');
         }
     }
 
@@ -36,6 +36,6 @@ export class DailyImagePlugin extends plugin {
         }
 
         const imageBuffer = await response.buffer(); 
-        return segment.image(imageBuffer);
+        return segment.image(imageBuffer); 
     }
 }
