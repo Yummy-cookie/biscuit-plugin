@@ -32,7 +32,7 @@ export const helpList = [
     title: '#ping (ip/域名)',
     desc: '功能'
   },{
-    icon: 100,
+    icon: 91,
     title: '#看60s',
     desc: '功能'
   }]

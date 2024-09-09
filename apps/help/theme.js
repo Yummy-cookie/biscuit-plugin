@@ -27,10 +27,10 @@ let Theme = {
     let name = lodash.sample(ret);
     let resPath = '{{_res_path}}/help/theme/';
     
-    // 修改这里，使用 API URL 作为背景图片
+    // 修改这里，使用 API URL 作为 main 图片
     return {
-      main: `${resPath}${name}/main.png`,
-      bg: 'https://t.mwm.moe/pc', // 使用 API URL
+      main: 'https://t.mwm.moe/pc', // 使用 API URL
+      bg: fs.existsSync(`${dirPath}${name}/bg.jpg`) ? `${resPath}${name}/bg.jpg` : `${resPath}default/bg.jpg`,
       style: (await Data.importModule(`resources/help/theme/${name}/config.js`)).style || {}
     };
   },
