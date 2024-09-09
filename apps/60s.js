@@ -1,5 +1,6 @@
 import plugin from '../../../lib/plugins/plugin.js';
 import fetch from 'node-fetch';
+import { segment } from 'oicq'; 
 
 export class DailyImagePlugin extends plugin {
     constructor() {
@@ -10,7 +11,7 @@ export class DailyImagePlugin extends plugin {
             priority: 2000,
             rule: [
                 {
-                    reg: '^#?看60s$',
+                    reg: '^#?看早安$',
                     fnc: 'sendImage'
                 }
             ]
