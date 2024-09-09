@@ -8,8 +8,8 @@ export const style = {
   // 描述文字颜色
   descColor: '#ffffff', // 亮白色
 
-  /* 面板整体底色，使用互换后的 slategray 渐变，透明度 35% */
-  contBgColor: 'linear-gradient(135deg, rgba(47, 79, 79, 0.35), rgba(112, 128, 144, 0.35))',
+  /* 面板整体底色，使用互换后的青色渐变，透明度 35% */
+  contBgColor: 'linear-gradient(135deg, rgba(0, 255, 255, 0.35), rgba(112, 128, 144, 0.35))', // 青色
 
   // 面板底图毛玻璃效果，数字越大越模糊，0-10，可为小数
   contBgBlur: 5, // 增加模糊效果
