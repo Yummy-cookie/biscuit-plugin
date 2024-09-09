@@ -18,12 +18,12 @@ Yunzai-Bot V3 的插件
 目前因为作者住院所以更新很慢
 
 ### 仓库人员
-作者:Yummy-Cookie[[Github]](https://github.com/Yummy-cookie/)[[Gitee]](https://gitee.com/Yummy-cookie)
+作者:Yummy-Cookie[[Github]](https://github.com/Yummy-cookie/)-[[Gitee]](https://gitee.com/Yummy-cookie)
 
 吉祥物:
-- ArcticFox520(白狐)[[Github]](https://github.com/ArcticFox520)[[Gitee]](https://gitee.com/baihu433)
-- ElysiaMadoka(墨染希_OFFICIAL)[[Github]](https://github.com/Kaname520)[[Gitee]](https://gitee.com/ElysiaMadoka)
-- MEMZ(Ein süßer MEMZ)[[Github]](https://github.com/MEMZ2007)[Gitee](https://gitee.com/memz2007)
+- ArcticFox520(白狐)[[Github]](https://github.com/ArcticFox520)-[[Gitee]](https://gitee.com/baihu433)
+- ElysiaMadoka(墨染希_OFFICIAL)[[Github]](https://github.com/Kaname520)-[[Gitee]](https://gitee.com/ElysiaMadoka)
+- MEMZ(Ein süßer MEMZ)[[Github]](https://github.com/MEMZ2007)-[[Gitee]](https://gitee.com/memz2007)
 
 ## 使用说明
 
@@ -65,8 +65,8 @@ pnpm install --filter=biscuit-plugin
 
 ### 链接
 
-- [gitee(本仓库)](https://gitee.com/Yummy-cookie/biscuit-plugin)
-- [github(本仓库)](https://github.com/Yummy-cookie/biscuit-plugin)
+- [Gitee(本仓库)](https://gitee.com/Yummy-cookie/biscuit-plugin)
+- [Github(本仓库)](https://github.com/Yummy-cookie/biscuit-plugin)
 - [云崽](https://github.com/Le-niao/Yunzai-Bot)
 - [插件库](https://github.com/yhArcadia/Yunzai-Bot-plugins-index)
 
