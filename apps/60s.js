@@ -1,12 +1,11 @@
 import plugin from '../../../lib/plugins/plugin.js';
 import fetch from 'node-fetch';
-import fs from 'fs';
 
 export class DailyImagePlugin extends plugin {
     constructor() {
         super({
             name: '每日图片插件',
-            dsc: '发送早安图片',
+            dsc: '发送每日早安图片',
             event: 'message',
             priority: 2000,
             rule: [
@@ -20,21 +19,22 @@ export class DailyImagePlugin extends plugin {
 
     async sendImage() {
         try {
-            const imageUrl = 'https://api.ahfi.cn/api/MorningNews'; 
-            await this.sendGroupImage(imageUrl);
+            const imageUrl = 'https://api.ahfi.cn/api/MorningNews';
+            const imageMessage = await this.getImageMessage(imageUrl);
+            await this.e.reply(imageMessage);
         } catch (error) {
             console.error(error);
             await this.e.reply('发送图片失败，请稍后再试。');
         }
     }
 
-    async sendGroupImage(imageUrl) {
+    async getImageMessage(imageUrl) {
         const response = await fetch(imageUrl);
         if (!response.ok) {
             throw new Error('无法获取图片');
         }
 
-        const imageBuffer = await response.buffer();
-        await this.e.reply({ type: 'group', file: imageBuffer });
+        const imageBuffer = await response.buffer(); 
+        return segment.image(imageBuffer);
     }
 }
