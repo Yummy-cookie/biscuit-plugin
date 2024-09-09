@@ -5,7 +5,7 @@ export class PingPlugin extends plugin {
     constructor() {
         super({
             name: 'Ping',
-            dsc: 'Ping',
+            dsc: '饼干ping',
             event: 'message',
             priority: 2000,
             rule: [
@@ -24,7 +24,7 @@ export class PingPlugin extends plugin {
         }
 
         const ip = input; 
-        const url = `https://api.ahfi.cn/api/ping?target=${ip}`;
+        const url = `https://api.pearktrue.cn/api/website/ping.php?url=${encodeURIComponent(ip)}`;
         
         try {
             const response = await fetch(url);
@@ -36,10 +36,10 @@ export class PingPlugin extends plugin {
 Ping 结果:
 主机: ${data.host}
 IP: ${data.ip}
-位置: ${data.Location}
-最小延迟: ${data.Delay.MinimumDelay}
-平均延迟: ${data.Delay.AverageDelay}
-最大延迟: ${data.Delay.MaximumDelay}
+位置: ${data.location}
+最小延迟: ${data.min}
+平均延迟: ${data.average}
+最大延迟: ${data.max}
                 `.trim();
                 await this.e.reply(reply);
             } else {
