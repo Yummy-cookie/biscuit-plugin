@@ -1,41 +1,39 @@
-import plugin from '../../../lib/plugins/plugin.js';
 import fetch from 'node-fetch';
-import { segment } from 'oicq';
 
-export class DailyImagePlugin extends plugin {
+export class DailyNewsPlugin extends plugin {
     constructor() {
         super({
-            name: '每日图片插件',
-            dsc: '发送每日早安图片',
+            name: '每日早报插件',
+            dsc: '发送每日早报图片',
             event: 'message',
             priority: 2000,
             rule: [
                 {
-                    reg: '^#?看60s$',
-                    fnc: 'sendImage'
+                    reg: '^#?看早报$',
+                    fnc: 'sendNewsImage'
                 }
             ]
         });
     }
 
-    async sendImage() {
+    async sendNewsImage(e) {
         try {
-            const imageUrl = 'https://api.ahfi.cn/api/MorningNews';
+            const imageUrl = 'https://api.ahfi.cn/api/MorningNews'; 
             const imageMessage = await this.getImageMessage(imageUrl);
             await this.reply(imageMessage); 
         } catch (error) {
-            console.error(error);
-            await this.reply('发送图片失败，请稍后再试。');
+            console.error('[每日早报插件][sendNewsImage] 发送早报时发生错误:', error);
+            await this.reply('发送早报失败，请稍后再试。');
         }
     }
 
     async getImageMessage(imageUrl) {
         const response = await fetch(imageUrl);
         if (!response.ok) {
-            throw new Error('无法获取图片');
+            throw new Error('无法获取早报图片');
         }
 
         const imageBuffer = await response.buffer(); 
-        return segment.image(imageBuffer); 
+        return imageBuffer; 
     }
 }
