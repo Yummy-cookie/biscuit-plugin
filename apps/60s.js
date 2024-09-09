@@ -17,7 +17,7 @@ export class example extends plugin {
 	}
 
 	async dailynews(e) {
-		this.e.reply(segment.image('https:///api/MorningNews'));
+		this.e.reply(segment.image('https://api.ahfi.cn/api/MorningNews'));
 		return true;
 	}
 
