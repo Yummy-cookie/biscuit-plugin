@@ -9,7 +9,7 @@ export class DailyNewsPlugin extends plugin {
             priority: 2000,
             rule: [
                 {
-                    reg: '^#?看早报$',
+                    reg: '^#?看60s$',
                     fnc: 'sendNewsImage'
                 }
             ]
@@ -19,8 +19,8 @@ export class DailyNewsPlugin extends plugin {
     async sendNewsImage(e) {
         try {
             const imageUrl = 'https://api.ahfi.cn/api/MorningNews'; 
-            const imageMessage = await this.getImageMessage(imageUrl);
-            await this.reply(imageMessage); 
+            const imageBuffer = await this.getImageMessage(imageUrl);
+            await this.reply(imageBuffer); // 直接发送图片 Buffer
         } catch (error) {
             console.error('[每日早报插件][sendNewsImage] 发送早报时发生错误:', error);
             await this.reply('发送早报失败，请稍后再试。');
@@ -33,7 +33,6 @@ export class DailyNewsPlugin extends plugin {
             throw new Error('无法获取早报图片');
         }
 
-        const imageBuffer = await response.buffer(); 
-        return imageBuffer; 
+        return await response.buffer(); // 直接返回图片的 Buffer
     }
 }
