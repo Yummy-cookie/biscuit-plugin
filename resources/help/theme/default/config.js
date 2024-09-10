@@ -5,7 +5,7 @@ export const style = {
 
   descColor: '#ffffff', 
 
-  contBgColor: 'linear-gradient(135deg, rgba(0, 255, 255, 0.8), rgba(112, 128, 144, 0.8))',
+  contBgColor: 'linear-gradient(135deg, rgba(0, 255, 255, 0.15), rgba(112, 128, 144, 0.15))',
 
   contBgBlur: 5, 
 
