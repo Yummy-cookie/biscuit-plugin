@@ -86,6 +86,6 @@ pnpm install --filter=biscuit-plugin
 ## 赞助列表
 | QQ名称                                           | 支付方式 | 额数 |
 |------------------------------------------------|------|----|
-| [墨染希_OFFICIAL][[Github]](https://github.com/Kaname520)-[[Gitee]](https://gitee.com/ElysiaMadoka) | QQ支付 | 50 |
+| （墨染希_OFFICIAL）[[Github]](https://github.com/Kaname520)-[[Gitee]](https://gitee.com/ElysiaMadoka) | QQ支付 | 50 |
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Yummy-cookie/biscuit-plugin&type=Date)](https://star-history.com/#Yummy-cookie/biscuit-plugin&Date)
