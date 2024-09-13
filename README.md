@@ -78,11 +78,14 @@ pnpm install --filter=biscuit-plugin
 - 出现问题可以提交issue（建议github，因为有邮件提醒）或者加qq群
 - 最后求个star~
 
-
 ## 赞助支持
 
 - 饼干博客： [饼干蓝蓝.cn](https://xn--fwt286fa722s.cn/)[请备注自己的QQ号]
 - 爱发电：<https://ifdian.net/a/yummy-cookie>
 
+## 赞助列表
+| QQ名称                                           | 支付方式 | 额数 |
+|------------------------------------------------|------|----|
+| [墨染希_OFFICIAL](https://gitee.com/ElysiaMadoka) | QQ支付 | 50 |
 
- [![Star History Chart](https://api.star-history.com/svg?repos=biscuit-plugin&type=Date)](https://star-history.com/#biscuit-plugin&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=Yummy-cookie/biscuit-plugin&type=Date)](https://star-history.com/#Yummy-cookie/biscuit-plugin&Date)
