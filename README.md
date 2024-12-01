@@ -80,7 +80,7 @@ pnpm install --filter=biscuit-plugin
 
 ## 赞助支持
 
-- 饼干博客： [饼干蓝蓝.cn](https://xn--fwt286fa722s.cn/)[请备注自己的QQ号]
+- 饼干博客： [饼干蓝蓝.cn](https://bbs.xn--fwt286fa722s.cn/)[请备注自己的QQ号]
 - 爱发电：<https://ifdian.net/a/yummy-cookie>
 
 ## 赞助列表
