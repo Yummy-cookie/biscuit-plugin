@@ -1,6 +1,6 @@
 ![动态访问量](https://count.kjchmc.cn/get/@biscuit-plugin?theme=rule34)<br>
 
-[![Group](https://img.shields.io/badge/QQ群号-1034041225-red?style=flat-square&logo=GroupMe&logoColor=white)](https://qm.qq.com/q/JltStPQ3ao)
+[![Group](https://img.shields.io/badge/QQ群号-1038089623-red?style=flat-square&logo=GroupMe&logoColor=white)](https://qm.qq.com/q/fySUrWjqNi)
 
 <div align=center>
  <img src ="https://img.shields.io/github/stars/Yummy-cookie/biscuit-plugin?"/>
